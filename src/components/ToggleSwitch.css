@@ -1,0 +1,64 @@
+/* Toggle Switch Styling - Moved from index.css */
+
+.toggle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    user-select: none;
+    /* Added for better UX */
+}
+
+.toggle-container.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.toggle-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    /* Ensure it uses the global text color */
+}
+
+.toggle-switch {
+    width: var(--toggle-size, 50px);
+    /* Fallback */
+    height: calc(var(--toggle-size, 50px) * 0.55);
+    background-color: #475569;
+    border-radius: 9999px;
+    position: relative;
+    transition: background-color 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.toggle-switch.on {
+    background-color: var(--success-color, #10b981);
+    /* Green for fans by default */
+}
+
+/* Specific color for Lights */
+/* Note: This selector relies on a parent class .control-item.light 
+   which is outside this component. It works because this CSS is global. */
+.control-item.light .toggle-switch.on {
+    background-color: #f59e0b;
+    /* Amber for lights */
+}
+
+.toggle-handle {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: calc(var(--toggle-size, 50px) * 0.55 - 4px);
+    height: calc(var(--toggle-size, 50px) * 0.55 - 4px);
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch.on .toggle-handle {
+    transform: translateX(calc(var(--toggle-size, 50px) * 0.45));
+}

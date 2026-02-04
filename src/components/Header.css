@@ -1,0 +1,120 @@
+.app-header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-bottom: 2rem;
+    padding: 1rem 1.5rem;
+}
+
+.glass-panel-header {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.college-branding {
+    display: flex;
+    flex-direction: column;
+}
+
+.college-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.college-subtitle {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.dept-name {
+    font-size: 1rem;
+    color: #60a5fa;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.25rem;
+    border-radius: 9999px;
+    /* Pill shape */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: inherit;
+}
+
+.nav-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Hide text on very small screens */
+@media (max-width: 600px) {
+    .nav-btn {
+        padding: 0.6rem;
+    }
+
+    .nav-text {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .college-name {
+        font-size: 1.1rem;
+    }
+
+    .college-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .dept-name {
+        font-size: 0.8rem;
+    }
+}

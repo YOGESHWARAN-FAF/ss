@@ -1,0 +1,157 @@
+/* Documentation Styles */
+.docs-container {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 95%;
+    color: var(--text-primary);
+    animation: fadeIn 0.4s ease-out;
+}
+
+.docs-container h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--glass-border);
+    background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.docs-content h2 {
+    color: #60a5fa;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.docs-content p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #cbd5e1;
+}
+
+.docs-content ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+
+.docs-content li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #cbd5e1;
+}
+
+.docs-content li::before {
+    content: '•';
+    color: #60a5fa;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.docs-content b,
+.docs-content strong {
+    color: #f8fafc;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* NEW STYLES FOR CODE BLOCK */
+.setup-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+}
+
+.setup-list li {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.setup-list li::before {
+    display: none;
+    /* override default bullet */
+}
+
+.highlight {
+    background: rgba(96, 165, 250, 0.2);
+    color: #60a5fa;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 1.1em;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.copy-btn {
+    background: #3b82f6;
+    border: none;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+.code-block-wrapper {
+    background: #1e293b;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.code-block {
+    margin: 0;
+    padding: 1.5rem;
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #e2e8f0;
+    white-space: pre-wrap;
+}
+
+/* Scrollbar for code block */
+.code-block::-webkit-scrollbar {
+    height: 8px;
+}
+
+.code-block::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+.code-block::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+}
