@@ -141,6 +141,8 @@
     line-height: 1.5;
     color: #e2e8f0;
     white-space: pre-wrap;
+    word-break: break-all;
+    /* Ensure long strings like keys/urls break */
 }
 
 /* Scrollbar for code block */

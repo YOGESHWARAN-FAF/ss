@@ -26,6 +26,10 @@
 .college-branding {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    /* Allow to take available space */
+    min-width: 0;
+    /* Critical for flex items to shrink below content size */
 }
 
 .college-name {
@@ -116,5 +120,7 @@
 
     .dept-name {
         font-size: 0.8rem;
+        white-space: normal;
+        /* Ensure text wraps */
     }
 }

@@ -20,6 +20,8 @@
     overflow-y: auto;
     border-radius: 12px;
     animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    word-wrap: break-word;
+    /* Prevent content from forcing width */
 }
 
 .glass-panel-modal {
