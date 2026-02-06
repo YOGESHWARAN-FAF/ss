@@ -99,8 +99,16 @@
         padding: 0.6rem;
     }
 
+    .nav-btn {
+        padding: 0.5rem;
+    }
+
     .nav-text {
         display: none;
+    }
+
+    .header-actions {
+        gap: 0.25rem;
     }
 }
 

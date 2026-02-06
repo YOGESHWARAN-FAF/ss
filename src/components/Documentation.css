@@ -191,4 +191,8 @@
         width: 100%;
         text-align: center;
     }
+
+    .back-btn-mobile {
+        display: block !important;
+    }
 }
