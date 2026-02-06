@@ -186,20 +186,11 @@ const Dashboard = () => {
 
       {currentView === 'docs' && (
         <div className="glass-panel docs-container">
-          <div className="docs-header-actions" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <div className="docs-header-actions">
             <h1>Documentation</h1>
             <button
               className="back-btn-mobile"
               onClick={() => handleNavigate('home')}
-              style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255,255,255,0.2)',
-                color: '#fff',
-                padding: '0.5rem 1rem',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                display: 'none' // Hidden by default, shown in CSS for mobile
-              }}
             >
               ← Back
             </button>
