@@ -39,10 +39,10 @@ const char* ssid = "YOUR_WIFI_SSID";
 const char* password = "YOUR_WIFI_PASSWORD";
 
 // ThingSpeak Channel Settings
-// FOR SET 1: Use Channel 3250252
-// FOR SET 2: Use Channel 3250257
-unsigned long channelID = 3250252;        
-const char* readAPIKey = "YZMUKLWR4D67NZZU";
+// FOR SET 1: Use Channel 3253492
+// FOR SET 2: Use Channel 3253495
+unsigned long channelID = 3253492;        
+const char* readAPIKey = "RY698J0VHL4S617W";
 
 // --------------------------------------------------------------------------------
 //  PIN MAPPING
@@ -131,113 +131,113 @@ void readThingSpeak() {
 `;
 
 const Dashboard = () => {
-    // Default configuration
-    const defaultSets = [
-        {
-            title: "SMART SPACE – SET 1",
-            channelId: "3250252",
-            readKey: "YZMUKLWR4D67NZZU",
-            writeKey: "5Q6OYJ7R6W2H30HF"
-        },
-        {
-            title: "SMART SPACE – SET 2",
-            channelId: "3250257",
-            readKey: "CFXKSK8INWTHAGN1",
-            writeKey: "6Q6EFKF92SNIEGHX"
-        }
-    ];
+  // Default configuration
+  const defaultSets = [
+    {
+      title: "SMART SPACE -FAN-LIGHT– SET 1",
+      channelId: "3253492",
+      readKey: "RY698J0VHL4S617W",
+      writeKey: "PDL349YLFR113GJ1"
+    },
+    {
+      title: "SMART SPACE -FAN-LIGHT– SET 2",
+      channelId: "3253495",
+      readKey: "IFZ2ER50TUTL9N3M",
+      writeKey: "HP9WAN9Q9U29OSEB"
+    }
+  ];
 
-    const [sets, setSets] = React.useState(() => {
-        const saved = localStorage.getItem('smartSpaceConfig');
-        return saved ? JSON.parse(saved) : defaultSets;
-    });
+  const [sets, setSets] = React.useState(() => {
+    const saved = localStorage.getItem('smartSpaceConfig');
+    return saved ? JSON.parse(saved) : defaultSets;
+  });
 
-    const [isSettingsOpen, setIsSettingsOpen] = React.useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = React.useState(false);
 
-    const handleSaveSettings = (newConfig) => {
-        setSets(newConfig);
-        localStorage.setItem('smartSpaceConfig', JSON.stringify(newConfig));
-    };
+  const handleSaveSettings = (newConfig) => {
+    setSets(newConfig);
+    localStorage.setItem('smartSpaceConfig', JSON.stringify(newConfig));
+  };
 
-    const [currentView, setCurrentView] = React.useState('home');
+  const [currentView, setCurrentView] = React.useState('home');
 
-    const handleNavigate = (view) => {
-        if (view === 'home') {
-            setCurrentView('home');
-        } else if (view === 'docs') {
-            setCurrentView('docs');
-        }
-    };
+  const handleNavigate = (view) => {
+    if (view === 'home') {
+      setCurrentView('home');
+    } else if (view === 'docs') {
+      setCurrentView('docs');
+    }
+  };
 
-    return (
-        <div className="dashboard-container">
-            <Header onOpenSettings={() => setIsSettingsOpen(true)} onNavigate={handleNavigate} />
+  return (
+    <div className="dashboard-container">
+      <Header onOpenSettings={() => setIsSettingsOpen(true)} onNavigate={handleNavigate} />
 
-            {currentView === 'home' && (
-                <div className="cards-wrapper">
-                    {sets.map((set, index) => (
-                        <ControlCard
-                            key={`${index}-${set.channelId}`} // Re-mount if channel changes
-                            {...set}
-                        />
-                    ))}
-                </div>
-            )}
-
-            {currentView === 'docs' && (
-                <div className="glass-panel docs-container">
-                    <h1>Documentation</h1>
-                    <div className="docs-content">
-                        <h2>1. Dashboard Setup</h2>
-                        <p>This dashboard is pre-configured for Mahendra Engineering College Smart Space. To ensure proper operation:</p>
-                        <ul>
-                            <li>Ensure you are connected to the internet.</li>
-                            <li>The dashboard polls ThingSpeak every 3 seconds.</li>
-                            <li>If a control automatically turns off, it means the command is being sent, but the ESP8266 hasn't updated the status field yet.</li>
-                        </ul>
-
-                        <h2>2. Settings Configuration</h2>
-                        <p>Click the <b>Settings</b> button in the header to configure Channel IDs and API Keys.</p>
-                        <ul>
-                            <li><b>Set 1:</b> Channel 3250252 (Default)</li>
-                            <li><b>Set 2:</b> Channel 3250257 (Default)</li>
-                        </ul>
-
-                        <h2>3. Hardware Logic</h2>
-                        <p>The system controls 8 devices per set:</p>
-                        <ul>
-                            <li><b>Fans 1-4:</b> Mapped to Fields 1-4</li>
-                            <li><b>Lights 1-4:</b> Mapped to Fields 5-8</li>
-                        </ul>
-
-                        <h2>4. ESP8266 Firmware (8+8 Setup)</h2>
-                        <p>To control 16 devices, you need <b>TWO separate ESP8266 boards</b>.</p>
-                        <ul className="setup-list">
-                            <li><b>Board 1 (Set 1):</b> Use Channel ID <code className="highlight">3250252</code></li>
-                            <li><b>Board 2 (Set 2):</b> Use Channel ID <code className="highlight">3250257</code></li>
-                        </ul>
-                        <div className="code-header">
-                            <p>Upload this code to both boards (change Channel ID for Board 2):</p>
-                            <button className="copy-btn" onClick={() => {
-                                navigator.clipboard.writeText(arduinoCode);
-                                alert('Code copied to clipboard!');
-                            }}>Copy Code</button>
-                        </div>
-                        <div className="code-block-wrapper">
-                            <pre className="code-block"><code>{arduinoCode}</code></pre>
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            <SettingsModal
-                isOpen={isSettingsOpen}
-                onClose={() => setIsSettingsOpen(false)}
-                channelConfig={sets}
-                onSave={handleSaveSettings}
+      {currentView === 'home' && (
+        <div className="cards-wrapper">
+          {sets.map((set, index) => (
+            <ControlCard
+              key={`${index}-${set.channelId}`} // Re-mount if channel changes
+              {...set}
             />
+          ))}
         </div>
-    );
+      )}
+
+      {currentView === 'docs' && (
+        <div className="glass-panel docs-container">
+          <h1>Documentation</h1>
+          <div className="docs-content">
+            <h2>1. Dashboard Setup</h2>
+            <p>This dashboard is pre-configured for Mahendra Engineering College Smart Space. To ensure proper operation:</p>
+            <ul>
+              <li>Ensure you are connected to the internet.</li>
+              <li>The dashboard polls ThingSpeak every 3 seconds.</li>
+              <li>If a control automatically turns off, it means the command is being sent, but the ESP8266 hasn't updated the status field yet.</li>
+            </ul>
+
+            <h2>2. Settings Configuration</h2>
+            <p>Click the <b>Settings</b> button in the header to configure Channel IDs and API Keys.</p>
+            <ul>
+              <li><b>Set 1:</b> Channel 3253492 (Default)</li>
+              <li><b>Set 2:</b> Channel 3253495 (Default)</li>
+            </ul>
+
+            <h2>3. Hardware Logic</h2>
+            <p>The system controls 8 devices per set:</p>
+            <ul>
+              <li><b>Fans 1-4:</b> Mapped to Fields 1-4</li>
+              <li><b>Lights 1-4:</b> Mapped to Fields 5-8</li>
+            </ul>
+
+            <h2>4. ESP8266 Firmware (8+8 Setup)</h2>
+            <p>To control 16 devices, you need <b>TWO separate ESP8266 boards</b>.</p>
+            <ul className="setup-list">
+              <li><b>Board 1 (Set 1):</b> Use Channel ID <code className="highlight">3253492</code></li>
+              <li><b>Board 2 (Set 2):</b> Use Channel ID <code className="highlight">3253495</code></li>
+            </ul>
+            <div className="code-header">
+              <p>Upload this code to both boards (change Channel ID for Board 2):</p>
+              <button className="copy-btn" onClick={() => {
+                navigator.clipboard.writeText(arduinoCode);
+                alert('Code copied to clipboard!');
+              }}>Copy Code</button>
+            </div>
+            <div className="code-block-wrapper">
+              <pre className="code-block"><code>{arduinoCode}</code></pre>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <SettingsModal
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
+        channelConfig={sets}
+        onSave={handleSaveSettings}
+      />
+    </div>
+  );
 };
 
 export default Dashboard;
